@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscar Comisión</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; padding: 20px; }
+        input, button { margin: 10px; padding: 10px; }
+    </style>
+</head>
+<body>
+    <h2>Buscar Comisión</h2>
+    <label for="apellido">Ingrese su apellido:</label>
+    <input type="text" id="apellido" placeholder="Ejemplo: Fernández">
+    <button onclick="buscarComision()">Buscar</button>
+    <p id="resultado"></p>
+
+    <script>
+        function buscarComision() {
+            const apellido = document.getElementById("apellido").value.trim().toUpperCase();
+            let comision = "No encontrado";
+            let enlace = "#";
+
+            const comisiones = [
+                { inicio: "ABALO", fin: "CALLISAYA", comision: "1", url: "https://padlet.com/UBAXXI/icp1-2025-comisi-n-1-zf7vdrlpslxmliro" },
+                { inicio: "CALVET", fin: "FERNÁNDEZ", comision: "2", url: "https://padlet.com/UBAXXI/icp1-2025-comisi-n-2-g278z6qjq70n3swv" },
+                { inicio: "FERNÁNDEZ BRAMANTI", fin: "LEGUIZA", comision: "3", url: "https://padlet.com/UBAXXI/icp1-2025-comisi-n-3-qotdkr7fxo9wu4fb" },
+                { inicio: "LEGUIZAMÓN", fin: "ORELLANA", comision: "4", url: "https://padlet.com/UBAXXI/icp1-2025-comisi-n-4-pfcnr9hhl1m7u6kr" },
+                { inicio: "ORELLANO", fin: "SALDIVAR", comision: "5", url: "https://padlet.com/UBAXXI/icp1-2025-comisi-n-5-rhutbqxim0d33mtu" },
+                { inicio: "SALDIVIA", fin: "ZURITA", comision: "6", url: "https://padlet.com/UBAXXI/icp1-2025-comisi-n-6-wb130s157evsdaxo" }
+            ];
+
+            for (let i = 0; i < comisiones.length; i++) {
+                if (apellido >= comisiones[i].inicio && apellido <= comisiones[i].fin) {
+                    comision = comisiones[i].comision;
+                    enlace = comisiones[i].url;
+                    break;
+                }
+            }
+
+            document.getElementById("resultado").innerHTML = "Tu comisión es: " + comision + " <br> <a href='" + enlace + "' target='_blank'>Ir al Padlet de Comisión " + comision + "</a>";
+        }
+    </script>
+</body>
+</html>
+
